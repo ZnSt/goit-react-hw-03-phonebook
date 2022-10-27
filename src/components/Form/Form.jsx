@@ -29,8 +29,8 @@ export class Form extends Component {
     return (
       <FormSt onSubmit={this.handleSubmit}>
         <Label htmlFor="name">
-          Name
           <Input
+            placeholder="Name"
             type="text"
             value={this.state.name}
             name="name"
@@ -43,8 +43,8 @@ export class Form extends Component {
         </Label>
 
         <Label htmlFor="number">
-          Number
           <Input
+            placeholder="Number"
             type="tel"
             value={this.state.number}
             name="number"

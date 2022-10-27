@@ -27,6 +27,8 @@ export class App extends Component {
     if (this.state.contacts.some((contact) => contact.name === name)) {
       return alert(`${name} is already in contacts`);
     }
+
+    this.toggleModal();
   };
 
   deleteContact = (contactId) => {
@@ -76,28 +78,63 @@ export class App extends Component {
 
     return (
       <>
-        <button type="button" onClick={this.toggleModal}>
-          Open Modal
+        <h1 style={{ textAlign: "center" }}>Click to add a new contact</h1>
+        <button
+          type="button"
+          onClick={this.toggleModal}
+          style={{
+            marginLeft: "auto",
+            marginRight: "auto",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "180px",
+            height: "50px",
+            backgroundColor: "transparent",
+            borderRadius: "5px",
+            padding: "5px",
+            cursor: "pointer",
+            fontSize: "18px",
+          }}
+        >
+          Open PhoneBook
         </button>
         {showModal && (
           <Modal onClose={this.toggleModal}>
-            <h1>Hello, its modal!</h1>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-              dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-              mollit anim id est laborum.
-            </p>
-            <button type="button" onClick={this.toggleModal}>
+            <h2 style={{ textAlign: "center", position: "relative" }}>Phonebook: </h2>
+            <Form onSubmit={this.addContact} />
+            <button
+              type="button"
+              onClick={this.toggleModal}
+              style={{
+                position: "absolute",
+                top: "6px",
+                right: "10px",
+                display: "block",
+                width: "55px ",
+                backgroundColor: "transparent",
+                borderRadius: "5px",
+                padding: "5px",
+                cursor: "pointer",
+              }}
+            >
               Close
             </button>
+            <p
+              style={{
+                textAlign: "center",
+                marginBottom: "0",
+                marginTop: "30px",
+                fontSize: "15px",
+                fontWeight: "bold",
+                color: "red",
+              }}
+            >
+              Please, enter name and number user
+            </p>
           </Modal>
         )}
 
-        <h2>Phonebook</h2>
-        <Form onSubmit={this.addContact} />
         <h2>Contacts:</h2>
         <div style={{ marginBottom: "10px", fontWeight: "bold" }}>
           <p>Total contacts: {contacts.length}</p>
